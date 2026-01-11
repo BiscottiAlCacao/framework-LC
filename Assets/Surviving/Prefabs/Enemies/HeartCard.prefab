@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2102954524937149237}
   - component: {fileID: 3054839473469209311}
   - component: {fileID: 4160561168357410855}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: HeartCard
   m_TagString: Enemy
   m_Icon: {fileID: 0}

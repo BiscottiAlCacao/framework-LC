@@ -164,7 +164,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GesturesReader
   dragThresholdPixels: 10
-  holdTimeSeconds: 0.2
+  holdTimeSeconds: 0
   raycastMask:
     serializedVersion: 2
     m_Bits: 0
@@ -850,7 +850,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6418df0ff4a8e5443bad839eef158d21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InputController
-  _timeForHold: 0.3
+  _timeForHold: 0
 --- !u!1 &1994408209
 GameObject:
   m_ObjectHideFlags: 0
@@ -1012,6 +1012,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: GoBackMainMenu
       objectReference: {fileID: 0}
+    - target: {fileID: 5444065778218933033, guid: cee7af350ea64a84ab7a4c229772fa59, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -138
+      objectReference: {fileID: 0}
     - target: {fileID: 7383707577950917273, guid: cee7af350ea64a84ab7a4c229772fa59, type: 3}
       propertyPath: m_Name
       value: Canvas
@@ -1053,6 +1057,14 @@ PrefabInstance:
     - target: {fileID: 4952872171592474746, guid: 628e2dd5e6cfdbe448f4bc67e6fc73ef, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 5508737591820406604, guid: 628e2dd5e6cfdbe448f4bc67e6fc73ef, type: 3}
+      propertyPath: characterStats
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5508737591820406604, guid: 628e2dd5e6cfdbe448f4bc67e6fc73ef, type: 3}
+      propertyPath: weapons.Array.size
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5578652678858255752, guid: 628e2dd5e6cfdbe448f4bc67e6fc73ef, type: 3}
       propertyPath: m_Size.x
