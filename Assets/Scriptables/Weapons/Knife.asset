@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb6fcee7fb211c9448d85bb7d08f83e4, type: 3}
+  m_Name: Knife
+  m_EditorClassIdentifier: Assembly-CSharp::Knife
+  _startingPower: 8
+  _startingSpeedProjectile: 2
+  _startingDuration: 2
+  _startingArea: 2
+  _startingCountdown: 1.2
+  _startingProjectileLifeTime: 0.5
+  prefabProjectileKnife: {fileID: 3741799038813351091, guid: 95d02646040980d4fbc3ab7f391f4d59, type: 3}
+  spawnProjectileDistance: {x: 0, y: 1.5}

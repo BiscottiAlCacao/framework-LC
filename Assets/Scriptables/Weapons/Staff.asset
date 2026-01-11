@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4eb6220264baf44790935c3ec7689b0, type: 3}
+  m_Name: Staff
+  m_EditorClassIdentifier: Assembly-CSharp::Staff
+  _startingPower: 8
+  _startingSpeedProjectile: 3
+  _startingDuration: 0
+  _startingArea: 0
+  _startingCountdown: 1.2
+  _startingProjectileLifeTime: 10
+  prefabProjectileStaff: {fileID: 3603505508930340040, guid: 0456dd1b56507d54898371ef4465b8de, type: 3}
+  spawnProjectileDistance: {x: 0, y: 0}
