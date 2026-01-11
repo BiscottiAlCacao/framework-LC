@@ -9,7 +9,8 @@ public class InputController : MonoBehaviour, MobileActions.IMobileMapActions
     public static InputController instance;
     private MobileActions _mobileActions;
 
-    private float _timeForHold;
+    [Header("INPUT SETTINGS")]
+    [SerializeField] private float _timeForHold;
     private float _savedTimeForHold;
 
     private float _timePrimaryInput;
@@ -18,6 +19,7 @@ public class InputController : MonoBehaviour, MobileActions.IMobileMapActions
     private bool _primaryTouchHolded;
     private bool _secondaryTouchHolded;
 
+    // events that can be used for callig in other scripts
     public Action<Vector2> onPrimaryTouchStarted;
     public Action<Vector2> onPrimaryTouchPerformed;
     public Action onPrimaryTouchCancelled;
@@ -29,6 +31,7 @@ public class InputController : MonoBehaviour, MobileActions.IMobileMapActions
     private void Awake()
     {
         _primaryTouchHolded = false;
+        _savedTimeForHold = _timeForHold;
         
         _mobileActions = new MobileActions();
 
@@ -50,6 +53,7 @@ public class InputController : MonoBehaviour, MobileActions.IMobileMapActions
         _mobileActions.MobileMap.RemoveCallbacks(this);
     }
 
+    // primary touch handling (started / performed / canceled)
     public void OnPrimaryTouch(InputAction.CallbackContext context)
     {
         if (context.started)
@@ -61,7 +65,7 @@ public class InputController : MonoBehaviour, MobileActions.IMobileMapActions
 
         if (context.performed && _primaryTouchHolded)
         {
-            onPrimaryTouchPerformed?.Invoke(context.ReadValue<Vector2>());
+           onPrimaryTouchPerformed?.Invoke(context.ReadValue<Vector2>());
         }
 
         if (context.canceled)
@@ -73,6 +77,7 @@ public class InputController : MonoBehaviour, MobileActions.IMobileMapActions
         }
     }
 
+    // secondary touch handling (started / performed) , if its needed
     public void OnSecondaryTouch(InputAction.CallbackContext context)
     {
         if (context.started)
@@ -87,6 +92,7 @@ public class InputController : MonoBehaviour, MobileActions.IMobileMapActions
         }
     }
 
+    // coroutine to detect primary hold
     private IEnumerator HoldTime()
     {
         yield return new WaitForSeconds(_timeForHold);

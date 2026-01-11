@@ -8,12 +8,12 @@
             "actions": [
                 {
                     "name": "PrimaryTouch",
-                    "type": "Button",
+                    "type": "Value",
                     "id": "c8f0a92b-06ba-44d9-898f-6390851e04c7",
-                    "expectedControlType": "",
+                    "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 },
                 {
                     "name": "SecondaryTouch",
