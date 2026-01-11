@@ -27,16 +27,11 @@ public class PlayerState : BaseState
 
     private void OnMove(Vector2 dir, Vector2 dir1)
     {
-        // map input to XZ plane
-        Vector3 move = new Vector3(dir.x, 0f, dir.y);
-
-        // if diagonal (magnitude > 1) normalize to avoid faster diagonal speed
-        if (move.sqrMagnitude > 1f) move.Normalize();
+        Vector3 move = new Vector3(dir.x, 0f, dir.y).normalized;
 
         var rb = gameManager.player.rb;
         float speed = gameManager.player.movementSpeed;
 
-        // preserve vertical velocity (gravity/jump) and apply horizontal velocity
         rb.linearVelocity = new Vector3(move.x * speed, rb.linearVelocity.y, move.z * speed);
     }
 
@@ -44,6 +39,6 @@ public class PlayerState : BaseState
     private void OnMoveCancelled(Vector2 dir)
     {
         var rb = gameManager.player.rb;
-        rb.linearVelocity = new Vector3(0f, 0, 0f);
+        rb.linearVelocity = Vector3.zero;
     }
 }
