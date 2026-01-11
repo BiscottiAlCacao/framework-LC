@@ -6,8 +6,11 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 99c9720ab356a0642a771bea13969a05
+    path: Assets/Surviving/Scenes/MainMenu.unity
+    guid: 7002f6bec6f7ff047bba238bbc19ba82
+  - enabled: 1
+    path: Assets/Surviving/Scenes/GamePlay.unity
+    guid: 8383c9d363349f747a02d24b972f68ac
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 57b3b9192be67b54a9ac8c26e8ac1144, type: 3}
   m_UseUCBPForAssetBundles: 0
