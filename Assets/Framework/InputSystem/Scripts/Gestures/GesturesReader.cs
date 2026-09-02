@@ -10,6 +10,8 @@ public class GesturesReader : MonoBehaviour
     public float dragThresholdPixels = 10f;
     public float holdTimeSeconds = 0.5f;
 
+    private float dragThresholdScaled => dragThresholdPixels * (Screen.dpi > 0 ? Screen.dpi / 160f : 1f);
+
     [Header("RAYCAST SETTINGS")]
     public LayerMask raycastMask = ~0;
     public float raycastMaxDistance = 100f;
@@ -92,11 +94,11 @@ public class GesturesReader : MonoBehaviour
     {
         if (!_isTouchActive) return;
 
-        Vector2 deltaFromLast = screenPos - _lastScreenPos;
+        Vector2 deltaFromLast = screenPos - _startScreenPos;
         float totalDistance = (screenPos - _startScreenPos).magnitude;
 
         // if its not in drag, check the thresHold
-        if (!_isDragging && totalDistance >= dragThresholdPixels)
+        if (!_isDragging && totalDistance >= dragThresholdScaled)
         {
             _isDragging = true;
 
