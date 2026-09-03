@@ -1,8 +1,9 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
-public class Enemy : MonoBehaviour
+public class Enemy : MonoBehaviour , IPoolable
 {
     [SerializeField] private EnemyStats _enemyStats;
     [SerializeField] Player _player;
@@ -17,12 +18,8 @@ public class Enemy : MonoBehaviour
 
     private bool _haveAttacked;
 
-    private void Awake()
-    {
-        rb = GetComponent<Rigidbody>();
-        _player = FindAnyObjectByType<Player>();
-        GetStartigStats();
-    }
+    public Action<Enemy> OnDeath;
+
 
     private void GetStartigStats()
     {
@@ -54,7 +51,7 @@ public class Enemy : MonoBehaviour
 
         if ( _currentHP <= 0 )
         {
-           OnDeath();
+            OnDeath.Invoke(this);
         }
     }
 
@@ -65,10 +62,16 @@ public class Enemy : MonoBehaviour
         _haveAttacked = false;     
     }
 
-    public  virtual void OnDeath()
+
+    public void OnSpawn()
     {
-        SpawnManager.instance.RemoveEnemy(gameObject);
-        Destroy(gameObject);
+        rb = GetComponent<Rigidbody>();
+        _player = FindAnyObjectByType<Player>();
+        GetStartigStats();
     }
 
+    public void OnDespawn()
+    {
+        StopAllCoroutines();
+    }
 }

@@ -39,11 +39,17 @@ public class BasePool<T> where T : Component
     }
 
 
-    public void AddToPool(T instance)
+    public virtual void AddToPool(T instance)
     {
         instance.gameObject.SetActive(false);
         instance.transform.SetParent(Parent);
         _pool.Enqueue(instance);
+    }
+
+    public virtual void ReturnToPool(T instance)
+    {
+        OnReturn(instance);
+        AddToPool(instance);
     }
 
     public T GetPoolable(Vector3 position, Quaternion rotation)
