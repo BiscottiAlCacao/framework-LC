@@ -4,13 +4,13 @@ using UnityEngine;
 public class BasePool<T> where T : Component
 {
     protected T Prefab { get; private set; }
-    protected Transform Parent { get; private set; }
+    protected Transform Container { get; private set; }
     private readonly Queue<T> _pool = new Queue<T>();
-
 
     public BasePool(T prefab, int prewarmCount = 0)
     {
         Prefab = prefab;
+        Container = new GameObject($"Pool_{prefab.name}").transform;
 
         for (int i = 0; i < prewarmCount; i++)
         {
@@ -18,12 +18,10 @@ public class BasePool<T> where T : Component
         }
     }
 
-
     protected virtual T CreateInstance()
     {
-        return Object.Instantiate(Prefab);
+        return Object.Instantiate(Prefab, Container);
     }
-
 
     protected virtual void OnGet(T instance)
     {
@@ -31,18 +29,16 @@ public class BasePool<T> where T : Component
             poolable.OnSpawn();
     }
 
-
     protected virtual void OnReturn(T instance)
     {
         if (instance is IPoolable poolable)
             poolable.OnDespawn();
     }
 
-
     public virtual void AddToPool(T instance)
     {
         instance.gameObject.SetActive(false);
-        instance.transform.SetParent(Parent);
+        instance.transform.SetParent(Container);
         _pool.Enqueue(instance);
     }
 
@@ -55,11 +51,9 @@ public class BasePool<T> where T : Component
     public T GetPoolable(Vector3 position, Quaternion rotation)
     {
         T instance = _pool.Count > 0 ? _pool.Dequeue() : CreateInstance();
-
         instance.transform.SetPositionAndRotation(position, rotation);
         instance.gameObject.SetActive(true);
         OnGet(instance);
-
         return instance;
     }
 }

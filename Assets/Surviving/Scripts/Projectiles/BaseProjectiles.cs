@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class BaseProjectiles : MonoBehaviour
+public class BaseProjectiles : MonoBehaviour , IPoolable
 {
     private int _power;
     private float _speedProjectile;
@@ -24,6 +24,16 @@ public class BaseProjectiles : MonoBehaviour
         speed = _speedProjectile;
 
         Destroy(gameObject, _projectileLifeTime);
+    }
+
+    public void OnDespawn()
+    {
+       
+    }
+
+    public void OnSpawn()
+    {
+        
     }
 
     public virtual void OnTriggerEnter(Collider other)
